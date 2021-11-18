@@ -5,21 +5,28 @@
 <meta name="keywords" content="Tik Tak Toe">
 <meta name="author" content="th3g3ntl3man">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="images/lotr-logo.png" sizes="16x16">
+<link rel="icon" type="favicon" href="/images/favicon.png" sizes="16x16">
 <title>Tik Tak Toe</title>
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 <body>
 <div class="centered">
-    <div class="box-wrapper">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
+    <div>
+        <div id="win">
+            <div id="textWin"></div>
+            <button id="restartXO" class="btn">Play again</button>
+        </div>
+        <div class="box-wrapper">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <button id="resetXO" class="btn">Reset</button>
     </div>
 </div>
 <script src="./js/app.js"></script>
