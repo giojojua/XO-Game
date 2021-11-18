@@ -30,8 +30,6 @@ resetXO.onclick = function () {
     }
 }
 
-console.log(restartXO)
-
 restartXO.onclick = function () {
     clicks = 0
     restartModal.style.display = 'none'
