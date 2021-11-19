@@ -29,21 +29,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var arrayXO = document.querySelectorAll('.box');
 var clicks = 0;
+var winningConditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
 
 var _loop = function _loop(i) {
   arrayXO[i].addEventListener('click', function () {
     if (clicks === 0 || clicks % 2 === 0 && arrayXO[i].innerHTML == 0) {
-      // console.log(clicks)
       clicks++;
       arrayXO[i].innerHTML = 'X';
       checkDraw(clicks);
-      checkWin('X');
+      checkWin('X', winningConditions);
     } else if (arrayXO[i].innerHTML == 0) {
-      // console.log(clicks)
       clicks++;
       arrayXO[i].innerHTML = 'O';
       checkDraw();
-      checkWin('O');
+      checkWin('O', winningConditions);
     }
 
     event.preventDefault();
@@ -76,47 +75,15 @@ function reset(hide) {
   }
 }
 
-function checkWin(x, o) {
-  switch (true) {
-    case arrayXO[0].innerHTML == x && arrayXO[1].innerHTML == x && arrayXO[2].innerHTML == x:
+function checkWin(x, winningConditions) {
+  for (var index in winningConditions) {
+    var val = winningConditions[index];
+
+    if (arrayXO[val[0]].innerHTML == x && arrayXO[val[1]].innerHTML == x && arrayXO[val[2]].innerHTML == x) {
       restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>");
       restartModal.style.display = 'flex';
       break;
-
-    case arrayXO[3].innerHTML == x && arrayXO[4].innerHTML == x && arrayXO[5].innerHTML == x:
-      restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>");
-      restartModal.style.display = 'flex';
-      break;
-
-    case arrayXO[6].innerHTML == x && arrayXO[7].innerHTML == x && arrayXO[8].innerHTML == x:
-      restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>");
-      restartModal.style.display = 'flex';
-      break;
-
-    case arrayXO[0].innerHTML == x && arrayXO[3].innerHTML == x && arrayXO[6].innerHTML == x:
-      restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>");
-      restartModal.style.display = 'flex';
-      break;
-
-    case arrayXO[1].innerHTML == x && arrayXO[4].innerHTML == x && arrayXO[7].innerHTML == x:
-      restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>");
-      restartModal.style.display = 'flex';
-      break;
-
-    case arrayXO[2].innerHTML == x && arrayXO[5].innerHTML == x && arrayXO[8].innerHTML == x:
-      restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>");
-      restartModal.style.display = 'flex';
-      break;
-
-    case arrayXO[0].innerHTML == x && arrayXO[4].innerHTML == x && arrayXO[8].innerHTML == x:
-      restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>  ");
-      restartModal.style.display = 'flex';
-      break;
-
-    case arrayXO[2].innerHTML == x && arrayXO[4].innerHTML == x && arrayXO[6].innerHTML == x:
-      restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>");
-      restartModal.style.display = 'flex';
-      break;
+    }
   }
 }
 
