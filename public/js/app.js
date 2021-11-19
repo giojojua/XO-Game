@@ -56,29 +56,27 @@ var restartXO = document.getElementById('restartXO');
 var resetXO = document.getElementById('resetXO');
 
 resetXO.onclick = function () {
+  reset();
+};
+
+restartXO.onclick = function () {
+  reset('none');
+};
+
+function reset(hide) {
   clicks = 0;
+  restartModal.style.display = hide;
 
   for (var _i = 0; _i < arrayXO.length; _i++) {
     arrayXO[_i].innerHTML = '';
   }
-};
-
-restartXO.onclick = function () {
-  clicks = 0;
-  restartModal.style.display = 'none';
-
-  for (var _i2 = 0; _i2 < arrayXO.length; _i2++) {
-    arrayXO[_i2].innerHTML = '';
-  }
-};
+}
 
 function checkWin(x) {
-  // console.log(x)
   switch (true) {
     case arrayXO[0].innerHTML == x && arrayXO[1].innerHTML == x && arrayXO[2].innerHTML == x:
       restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>");
       restartModal.style.display = 'flex';
-      console.log(x);
       break;
 
     case arrayXO[3].innerHTML == x && arrayXO[4].innerHTML == x && arrayXO[5].innerHTML == x:
