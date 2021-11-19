@@ -5,6 +5,7 @@
   "main": "app.js",
   "private": true,
   "scripts": {
+    "deploy": "surge --project ./public --token 0882c8aff0699e84d693bd77d2e5c464 --domain playxo.surge.sh",
     "dev": "mix",
     "watch": "mix watch"
   },
