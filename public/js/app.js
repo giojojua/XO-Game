@@ -33,12 +33,16 @@ var clicks = 0;
 var _loop = function _loop(i) {
   arrayXO[i].addEventListener('click', function () {
     if (clicks === 0 || clicks % 2 === 0 && arrayXO[i].innerHTML == 0) {
+      // console.log(clicks)
       clicks++;
       arrayXO[i].innerHTML = 'X';
+      checkDraw(clicks);
       checkWin('X');
     } else if (arrayXO[i].innerHTML == 0) {
+      // console.log(clicks)
       clicks++;
       arrayXO[i].innerHTML = 'O';
+      checkDraw();
       checkWin('O');
     }
 
@@ -72,7 +76,7 @@ function reset(hide) {
   }
 }
 
-function checkWin(x) {
+function checkWin(x, o) {
   switch (true) {
     case arrayXO[0].innerHTML == x && arrayXO[1].innerHTML == x && arrayXO[2].innerHTML == x:
       restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>");
@@ -113,6 +117,13 @@ function checkWin(x) {
       restartModalText.innerHTML = "<h2>".concat(x, " Wins</h2>");
       restartModal.style.display = 'flex';
       break;
+  }
+}
+
+function checkDraw(clicks) {
+  if (clicks === 9) {
+    restartModalText.innerHTML = "<h2>Draw</h2>";
+    restartModal.style.display = 'flex';
   }
 }
 
